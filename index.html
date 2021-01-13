@@ -19,13 +19,19 @@
   <body>
     <header class="header">
       <button class="btn btn--again">Again!</button>
-      <p class="header__between">(Can be 1 - 100)</p>
+      <p class="header__between">(Can be 1 - 99)</p>
       <h1 class="header__title">Guess the Number!</h1>
       <div class="header__number">?</div>
     </header>
     <main class="game">
       <section class="guess-section">
-        <input type="number" class="guess-section__input" />
+        <input
+          type="number"
+          class="guess-section__input"
+          value="1"
+          min="1"
+          max="99"
+        />
         <button class="btn btn--check">Check!</button>
       </section>
       <section class="dashboard-section">

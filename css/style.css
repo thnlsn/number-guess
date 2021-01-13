@@ -23,10 +23,9 @@ body {
   color: #e4e3e4;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content min-content; }
+  grid-template-rows: 1fr 1fr; }
 
 .header {
-  height: 40vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr min-content 45%;
