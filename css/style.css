@@ -14,6 +14,9 @@ html {
   @media only screen and (max-width: 31.25em) {
     html {
       font-size: 46.25%; } }
+  @media only screen and (max-width: 25em) {
+    html {
+      font-size: 40%; } }
 
 body {
   height: 100vh;
