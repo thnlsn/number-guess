@@ -1,0 +1,22 @@
+// GLOBAL RESET
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; // This is so that if we want a whole component to use a certain box-sizing system, we only have to declare it in the oldest parent of the component for the children to inherit
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // This sets the default font-size to 10px because most broswers default to 16px, and 62.5% of 16 is 10. This makes it easier to use rem units.
+}
+
+body {
+  font-family: $default-font;
+  font-size: 1.6rem;
+
+  padding: 4rem;
+  background-color: $color-primary;
+  color: $color-secondary;
+}
