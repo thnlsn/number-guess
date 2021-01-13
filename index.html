@@ -13,19 +13,37 @@
 
     <title>Number Guess</title>
   </head>
-  <script src="./js/index.js"></script>
+
+  <!-- BODY START ////////////////////////////////////////////// -->
+
   <body>
     <header class="header">
-      <h1 class="header__title">Guess the Number!</h1>
-      <p class="header__between">(Can be 1 - 100)</p>
       <button class="btn btn--again">Again!</button>
+      <p class="header__between">(Can be 1 - 100)</p>
+      <h1 class="header__title">Guess the Number!</h1>
       <div class="header__number">?</div>
     </header>
-    <main class="game-container">
-      <section class="guess">
-        <input type="number" class="guess__input" />
+    <main class="game">
+      <section class="guess-section">
+        <input type="number" class="guess-section__input" />
+        <button class="btn btn--check">Check!</button>
+      </section>
+      <section class="dashboard-section">
+        <div class="dashboard-section__dashboard">
+          <p class="dashboard-section__message">Begin guessing...</p>
+          <p class="dashboard-section__score-label">
+            Score: <span class="dashboard-section__score">20</span>
+          </p>
+          <p class="dashboard-section__highscore-label">
+            Highscore: <span class="dashboard-section__highscore">0</span>
+          </p>
+        </div>
       </section>
     </main>
+
+    <!-- BODY END //////////////////////////////////////////////// -->
+
+    <script src="./js/index.js"></script>
   </body>
 </html>
 

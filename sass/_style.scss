@@ -1,0 +1,156 @@
+.header {
+  height: 40vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr min-content 45%;
+
+  align-items: center;
+  justify-items: center;
+
+  padding: 4rem 4rem 0 4rem;
+
+  @media only screen and (max-width: $bp-smallest) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr max-content min-content 1fr;
+  }
+
+  &__between {
+    align-self: start;
+    justify-self: end;
+
+    @media only screen and (max-width: $bp-smallest) {
+      grid-column: 1 / -1;
+      grid-row: 3 / 4;
+      align-self: center;
+      justify-self: center;
+      margin-top: 0.75rem;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    line-height: 1.5;
+    grid-column: 1 / -1;
+  }
+
+  &__number {
+    font-size: 11.5rem;
+    background-color: $color-secondary;
+    color: $color-primary;
+
+    display: inline-block;
+    text-align: center;
+
+    align-self: end;
+
+    padding: 2.7rem 2rem 2rem 2.7rem;
+
+    grid-column: 1 / -1;
+
+    transform: translateY(50%);
+  }
+
+  border-bottom: $section-gutter solid $color-secondary;
+  margin-bottom: 11rem;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-columns: 1fr;
+  }
+
+  padding: 0 4rem 4rem 4rem;
+
+  row-gap: 4rem;
+}
+
+.guess-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 4rem;
+
+  &__input {
+    outline: none;
+    border: 0.75rem solid $color-secondary;
+    border-radius: 0;
+
+    background-color: transparent;
+
+    display: inline-block;
+
+    font-size: 8rem;
+    color: inherit;
+    font-family: inherit;
+
+    width: 30rem;
+    text-align: center;
+    padding: 2.7rem 2rem 2rem 2.7rem;
+  }
+}
+
+.dashboard-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    border: 0.75rem solid $color-secondary;
+    padding: 2rem;
+  }
+
+  &__dashboard {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+  }
+
+  &__message {
+    margin-bottom: 4rem;
+  }
+
+  &__score-label {
+    @media only screen and (max-width: $bp-medium) {
+    }
+  }
+
+  &__highscore__label {
+    @media only screen and (max-width: $bp-medium) {
+    }
+  }
+}
+
+.btn {
+  outline: none;
+  border: none;
+  border-radius: 0;
+
+  font-size: 3rem;
+  font-family: inherit;
+  background-color: $color-secondary;
+  color: $color-primary;
+
+  padding: 2.7rem 2rem 2rem 2.7rem;
+
+  &:hover {
+    background-color: #ccc;
+  }
+  &:active {
+    background-color: #c5c5c5;
+    transform: scale(0.99);
+  }
+
+  &--again {
+    justify-self: start;
+    align-self: start;
+    @media only screen and (max-width: $bp-smallest) {
+      justify-self: center;
+      align-self: start;
+    }
+  }
+}

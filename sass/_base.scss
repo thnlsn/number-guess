@@ -10,13 +10,24 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; // This sets the default font-size to 10px because most broswers default to 16px, and 62.5% of 16 is 10. This makes it easier to use rem units.
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%;
+  }
+  @media only screen and (max-width: $bp-smallest) {
+    font-size: 46.25%;
+  }
 }
 
 body {
+  height: 100vh;
   font-family: $default-font;
   font-size: 1.6rem;
 
-  padding: 4rem;
   background-color: $color-primary;
   color: $color-secondary;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content;
 }
