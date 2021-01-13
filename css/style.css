@@ -28,6 +28,21 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr; }
 
+@keyframes shake {
+  20% {
+    transform: translate(2rem, 50%); }
+  40% {
+    transform: translate(-2rem, 50%); }
+  60% {
+    transform: translate(1rem, 50%); }
+  80% {
+    transform: translate(1rem, 50%); }
+  100% {
+    transform: translate(0, 50%); } }
+
+.shake {
+  animation: 0.15s linear shake; }
+
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -131,3 +146,5 @@ body {
       .btn--again {
         justify-self: center;
         align-self: start; } }
+    .btn--again:active ~ .header__number {
+      animation: 0.15s linear shake; }

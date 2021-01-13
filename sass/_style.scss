@@ -151,5 +151,9 @@
       justify-self: center;
       align-self: start;
     }
+
+    &:active ~ .header__number {
+      animation: 0.15s linear shake;
+    }
   }
 }
