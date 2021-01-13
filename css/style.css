@@ -62,7 +62,7 @@ body {
     display: inline-block;
     text-align: center;
     align-self: end;
-    padding: 2.7rem 2rem 2rem 2.7rem;
+    padding: 3.5rem 2rem 2rem 3.5rem;
     grid-column: 1 / -1;
     transform: translateY(50%); }
 
@@ -92,7 +92,7 @@ body {
     font-family: inherit;
     width: 30rem;
     text-align: center;
-    padding: 2.7rem 2rem 2rem 2.7rem; }
+    padding: 3.5rem 2rem 2rem 3.5rem; }
 
 .dashboard-section {
   display: flex;
@@ -118,7 +118,7 @@ body {
   font-family: inherit;
   background-color: #e4e3e4;
   color: #201f20;
-  padding: 2.7rem 2rem 2rem 2.7rem; }
+  padding: 3.5rem 2rem 2rem 3.5rem; }
   .btn:hover {
     background-color: #ccc; }
   .btn:active {

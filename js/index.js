@@ -2,11 +2,74 @@
 
 console.log('Working');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+const reduceScore = (message) => {
+  document.querySelector('.dashboard-section__message').textContent = message;
+  score--; // Reduce score state
+  document.querySelector('.dashboard-section__score').textContent = score; // Set to score dom
+};
+
+const endGame = (message) => {
+  document.querySelector('.header__number').textContent = answer; // Set ? to answer
+  document.querySelector('.header__number').style.padding =
+    '3.5rem 6rem 2rem 7.5rem';
+  document.querySelector('.dashboard-section__message').textContent = message;
+};
+
+const winGame = () => {
+  endGame('You win!');
+  document.querySelector('body').style.backgroundColor = '#60b347';
+  if (
+    highscore < document.querySelector('.dashboard-section__score').textContent
+  ) {
+    // Set highscore variable to the current score
+    highscore = document.querySelector('.dashboard-section__score').textContent;
+    // Set the textContent of highscore span to that new highscore
+    document.querySelector(
+      '.dashboard-section__highscore'
+    ).textContent = highscore;
+  }
+};
+
+const loseGame = () => {
+  endGame('You lose!');
+  document.querySelector('body').style.backgroundColor = '#b34760';
+  score = 0;
+  document.querySelector('.dashboard-section__score').textContent = score; // Set to score dom
+};
+
+const resetGame = () => {
+  // Reset the answer and score state variables
+  score = 20;
+  answer = Math.trunc(Math.random() * 99 + 1);
+
+  // Set message, ?, and score back to default
+  document.querySelector('.dashboard-section__message').textContent =
+    'Begin guessing...';
+  // Set the number back to ?
+  document.querySelector('.header__number').textContent = '?';
+  // Set score back to 20
+  document.querySelector('.dashboard-section__score').textContent = score; // Set to score dom
+  // Set value of input to 1
+  document.querySelector('.guess-section__input').value = 1;
+
+  // Set background back to black
+  document.querySelector('body').style.backgroundColor = '#201f20';
+  // Set the padding of the number back
+  document.querySelector('.header__number').style.padding =
+    '3.5rem 2rem 2rem 3.5rem';
+
+  // Console
+  console.log(answer);
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
 // State
 let score = 20;
 let highscore = 0;
-const answer = Math.trunc(Math.random() * 99 + 1);
-
+let answer = Math.trunc(Math.random() * 99 + 1);
 console.log(answer);
 
 document.querySelector('.btn--check').addEventListener('click', () => {
@@ -17,47 +80,18 @@ document.querySelector('.btn--check').addEventListener('click', () => {
   if (!guess || guess < 1 || guess > 99) {
     document.querySelector('.dashboard-section__message').textContent =
       'Not a valid number!';
+    // IF THE SCORE IS NOT YET 0, CHECK GUESS TO ANSWER...
   } else if (score > 1) {
-    // Check if the guess less than the answer
-    if (guess > answer) {
-      // Tell user too high
-      document.querySelector('.dashboard-section__message').textContent =
-        'Too high!';
-      score--; // Reduce score state
-      document.querySelector('.dashboard-section__score').textContent = score; // Set to score dom
-
-      // Check if the guess more than the answer
-    } else if (guess < answer) {
-      // Tell user too low
-      document.querySelector('.dashboard-section__message').textContent =
-        'Too low!';
-      score--; // Reduce score state
-      document.querySelector('.dashboard-section__score').textContent = score; // Set to score dom
-
-      // Guess must be correct
-    } else {
-      document.querySelector('.header__number').textContent = answer; // Set ? to answer
-      // Tell user they win
-      document.querySelector('.dashboard-section__message').textContent =
-        'Correct! You win!';
-
-      // If highscore is less than the current score as the game ends...
-      if (
-        highscore <
-        document.querySelector('.dashboard-section__score').textContent
-      ) {
-        // Set highscore variable to the current score
-        highscore = document.querySelector('.dashboard-section__score')
-          .textContent;
-        // Set the textContent of highscore span to that new highscore
-        document.querySelector(
-          '.dashboard-section__highscore'
-        ).textContent = highscore;
-      }
-    }
+    // IF GUESS IS WRONG...
+    if (guess !== answer) {
+      guess > answer ? reduceScore('Too high!') : reduceScore('Too low!');
+    } else winGame(); // MUST HAVE WON...
+    // IF SCORE IS 0...
   } else {
-    document.querySelector('.dashboard-section__message').textContent =
-      'You lose!';
-    document.querySelector('.dashboard-section__score').textContent = score; // Set to score dom
+    loseGame();
   }
+});
+
+document.querySelector('.btn--again').addEventListener('click', () => {
+  resetGame();
 });
