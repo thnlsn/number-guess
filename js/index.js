@@ -84,13 +84,16 @@ document.querySelector('.btn--check').addEventListener('click', () => {
     setMessage('Not a valid number!');
     // IF THE SCORE IS NOT YET 0, CHECK GUESS TO ANSWER...
   } else if (score >= 1) {
+    console.log(score);
     // IF GUESS IS WRONG...
     if (guess !== answer) {
       guess > answer ? reduceScore('Too high!') : reduceScore('Too low!');
+      console.log(score);
+      if (score === 0) {
+        loseGame();
+      }
     } else winGame(); // MUST HAVE WON...
     // IF SCORE IS 0...
-  } else {
-    loseGame();
   }
 });
 
