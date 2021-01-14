@@ -34,3 +34,8 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
 }
+
+::selection {
+  background-color: transparentize($color-secondary, 0.2);
+  color: $color-primary;
+}

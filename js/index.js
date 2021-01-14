@@ -4,8 +4,12 @@ console.log('Working');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-const reduceScore = (message) => {
+const setMessage = (message) => {
   document.querySelector('.dashboard-section__message').textContent = message;
+};
+
+const reduceScore = (message) => {
+  setMessage(message);
   score--; // Reduce score state
   document.querySelector('.dashboard-section__score').textContent = score; // Set to score dom
 };
@@ -14,7 +18,7 @@ const endGame = (message) => {
   document.querySelector('.header__number').textContent = answer; // Set ? to answer
   document.querySelector('.header__number').style.padding =
     '3.5rem 6rem 2rem 7.5rem';
-  document.querySelector('.dashboard-section__message').textContent = message;
+  setMessage(message);
 };
 
 const winGame = () => {
@@ -45,8 +49,7 @@ const resetGame = () => {
   answer = Math.trunc(Math.random() * 99 + 1);
 
   // Set message, ?, and score back to default
-  document.querySelector('.dashboard-section__message').textContent =
-    'Begin guessing...';
+  setMessage('Begin guessing...');
   // Set the number back to ?
   document.querySelector('.header__number').textContent = '?';
   // Set score back to 20
@@ -78,10 +81,9 @@ document.querySelector('.btn--check').addEventListener('click', () => {
 
   // If there isn't a guess, or the guess is outside the 1-99 parameters...
   if (!guess || guess < 1 || guess > 99) {
-    document.querySelector('.dashboard-section__message').textContent =
-      'Not a valid number!';
+    setMessage('Not a valid number!');
     // IF THE SCORE IS NOT YET 0, CHECK GUESS TO ANSWER...
-  } else if (score > 1) {
+  } else if (score >= 1) {
     // IF GUESS IS WRONG...
     if (guess !== answer) {
       guess > answer ? reduceScore('Too high!') : reduceScore('Too low!');
