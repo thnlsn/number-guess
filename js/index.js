@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('Working');
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 const setMessage = (message) => {
@@ -62,9 +60,25 @@ const resetGame = () => {
   // Set the padding of the number back
   document.querySelector('.header__number').style.padding =
     '3.5rem 2rem 2rem 3.5rem';
+};
 
-  // Console
-  console.log(answer);
+const checkGuess = () => {
+  const guess = Number(document.querySelector('.guess-section__input').value);
+
+  // If there isn't a guess, or the guess is outside the 1-99 parameters...
+  if (!guess || guess < 1 || guess > 99) {
+    setMessage('Not a valid number!');
+    // IF THE SCORE IS NOT YET 0, CHECK GUESS TO ANSWER...
+  } else if (score >= 1) {
+    // IF GUESS IS WRONG...
+    if (guess !== answer) {
+      guess > answer ? reduceScore('Too high!') : reduceScore('Too low!');
+      if (score === 0) {
+        loseGame();
+      }
+    } else winGame(); // MUST HAVE WON...
+    // IF SCORE IS 0...
+  }
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,29 +87,14 @@ const resetGame = () => {
 let score = 20;
 let highscore = 0;
 let answer = Math.trunc(Math.random() * 99 + 1);
-console.log(answer);
 
 document.querySelector('.btn--check').addEventListener('click', () => {
-  const guess = Number(document.querySelector('.guess-section__input').value);
-  console.log(guess, typeof guess);
-
-  // If there isn't a guess, or the guess is outside the 1-99 parameters...
-  if (!guess || guess < 1 || guess > 99) {
-    setMessage('Not a valid number!');
-    // IF THE SCORE IS NOT YET 0, CHECK GUESS TO ANSWER...
-  } else if (score >= 1) {
-    console.log(score);
-    // IF GUESS IS WRONG...
-    if (guess !== answer) {
-      guess > answer ? reduceScore('Too high!') : reduceScore('Too low!');
-      console.log(score);
-      if (score === 0) {
-        loseGame();
-      }
-    } else winGame(); // MUST HAVE WON...
-    // IF SCORE IS 0...
-  }
+  checkGuess();
 });
+
+document.onkeydown = (event) => {
+  if (event.key === 'Enter') checkGuess();
+};
 
 document.querySelector('.btn--again').addEventListener('click', () => {
   resetGame();
